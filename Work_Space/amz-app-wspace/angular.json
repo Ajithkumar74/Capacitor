@@ -1,0 +1,165 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "amz-app-ui": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/amz-app-ui",
+      "sourceRoot": "projects/amz-app-ui/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/amz-app-ui",
+            "index": "projects/amz-app-ui/src/index.html",
+            "browser": "projects/amz-app-ui/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/amz-app-ui/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/amz-app-ui/public"
+              }
+            ],
+            "styles": [
+              "projects/amz-app-ui/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "amz-app-ui:build:production"
+            },
+            "development": {
+              "buildTarget": "amz-app-ui:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/amz-app-ui/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/amz-app-ui/public"
+              }
+            ],
+            "styles": [
+              "projects/amz-app-ui/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "uiux": {
+      "projectType": "library",
+      "root": "projects/uiux",
+      "sourceRoot": "projects/uiux/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/uiux/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/uiux/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/uiux/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/uiux/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "dvc-camera": {
+      "projectType": "library",
+      "root": "projects/dvc-camera",
+      "sourceRoot": "projects/dvc-camera/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/dvc-camera/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/dvc-camera/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/dvc-camera/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/dvc-camera/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
+}

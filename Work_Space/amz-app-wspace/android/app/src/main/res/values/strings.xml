@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">amz-app-ui</string>
+    <string name="title_activity_main">amz-app-ui</string>
+    <string name="package_name">com.virtusa.amz</string>
+    <string name="custom_url_scheme">com.virtusa.amz</string>
+</resources>
